@@ -9,7 +9,7 @@ A simple Web Application to showcase NextBillion Routing API's capabilities was 
 - HTML
 - CSS
 - Javascript(includes NextBillion Javascript framework)
-- JQuery
+- jQuery
 
 ---------------------------------------------------------------------------------------------------------------------
 
