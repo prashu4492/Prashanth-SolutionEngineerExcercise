@@ -1,0 +1,69 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: 20vw 80vw;
+    grid-template-rows: 100vh;
+}
+.sidebar{
+    /* margin: 15px; */
+}
+.sidebarHolder{
+    margin: 15px;
+}
+.grid-1{
+    /* background-color: #DF1B12; */
+    background-color: #2D2B57;
+    color: white;
+    border-right: 2px solid darkgray;
+    overflow: auto;
+}
+.map {
+    width: 100%;
+    height:100vh;
+  }
+.routeDiv{
+    /* margin: 15px; */
+    width: 100%;
+    padding-bottom: 10px;
+    /* border-bottom: 1px solid white; */
+}
+.btn {
+    background-color: #61ADE0; /* Blue background */
+    border: none; /* Remove borders */
+    border-radius: 10%;
+    color: white; /* White text */
+    padding: 3px 6px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+  
+  /* Darker background on mouse-over */
+.btn:hover, .routeDisplaybtn:hover, .routeClearBtn:hover {
+    background-color: #996BA8;
+}
+.dstBodyContent, .routeInteractionHolder, .routeInfoContainer {
+    width: 100%;
+    float:left;
+    margin-top: 10px;
+}
+.destinationTextBox{
+    float: left;
+    width: 90%;
+}
+#dstPt{
+    width: 100%;
+}
+.showRouteButton{
+    float: left;
+    width: 50%;
+}
+.clearRouteButton{
+    float: right;
+    width: 50%;
+}

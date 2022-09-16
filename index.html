@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextBillion AI</title>
+    <link rel="icon" href="icons/nbai-logo.svg">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://maps-gl.nextbillion.io/maps/v2/api/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="margin: 0px; font-family: system-ui;">
+    <div class="grid-container">
+        <div class="grid-1">
+            <div class="sidebar">
+                <div class="title-logo">
+                    <a href="https://nextbillion.ai/"><img src="icons/nbai-logo.svg" alt="docs logo" style="height: 100px; width: 100%; align-items: center; background-color: white; padding: 10px;"></a>
+                </div>
+                <div class="sidebarHolder">
+                    <div class="routeDiv">
+                        <h3 style="margin: 5px;">ROUTE PLANNER</h3>
+                        <a>Search for a nearby Point of Interest to get driving directions from your current location</a>
+                        <div class="dstBodyContent">
+                            <div class="destinationTextBox">
+                                <input type="text" style="max-width: 230px; font-family: system-ui;" name="routeDestinationPoint" id="dstPt"
+                                    placeholder="POI Search" title=$value
+                                    oninput="searchInput('dstPt', 'destination')">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="routeInteractionHolder">
+                            <div class="showRouteButton">
+                                <button class="routeDisplaybtn" style="font-family: system-ui; cursor: pointer;" onclick="getCurrentPos(dstPointLatLng)">Show Route</button>
+                            </div>
+                            <div class="clearRouteButton">
+                                <button class="routeClearBtn" style="font-family: system-ui; cursor: pointer;" onclick="clearRoute()">Clear Route</button>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="routeInfoContainer" style="width: 100%; visibility: hidden;">
+                            <div class="routeInfoTextHolder" style="margin-top: 10px; overflow: auto; background-color: #996BA8; color: #FCFBFD;">
+                                <p id="distanceValue" style="padding-left:5px;">Distance: </p>
+                                <p id="durationValue" style="padding-left:5px;">Duration: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-2">
+            <div id="js-map" class="map"></div>
+        </div>
+    </div>
+    <script src="https://maps-gl.nextbillion.io/maps/v2/api/js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="main.js"></script>
+</body>
+<script>
+    var map;
+    (function loadMap() {
+        //Set API Key
+        nextbillion.setApiKey('ca75452cbfff4d5585d9a376ab4b0d89');
+        
+        //Load map
+        map = new nextbillion.maps.Map({
+            container: document.getElementById('js-map'),
+            style: "https://api.nextbillion.io/maps/streets/style.json",
+            zoom: 12,
+            center: { lat: 12.9716, lng: 77.5946 }
+        });
+
+        // Add navigation controls to map
+        var nav = new nextbillion.maps.NavigationControl();
+            map.map.addControl(nav, 'top-right');
+
+        // Add get-geolocation option feature to map
+        map.map.addControl(new nextbillion.maps.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        }));
+
+        // Add fullscreen option
+        map.map.addControl(new nextbillion.maps.FullscreenControl({container: document.querySelector('body')}));
+    })()
+    </script>
+</html>
